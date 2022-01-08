@@ -10,56 +10,56 @@ let
     any-nix-shell        # fish support for nix shell
     arandr               # simple GUI for xrandr
     asciinema            # record the terminal
-    audacious            # simple music player
+    # audacious            # simple music player
     bitwarden-cli        # command-line client for the password manager
     bottom               # alternative to htop & ytop
     cachix               # nix caching
-    calibre              # e-book reader
+    # calibre              # e-book reader
     dconf2nix            # dconf (gnome) files to nix converter
-    discord              # chat client for dev stuff
+    # discord              # chat client for dev stuff
     dmenu                # application launcher
-    docker-compose       # docker manager
-    dive                 # explore docker layers
+    # docker-compose       # docker manager
+    # dive                 # explore docker layers
     duf                  # disk usage/free utility
-    element-desktop      # a feature-rich client for Matrix.org
+    # element-desktop      # a feature-rich client for Matrix.org
     exa                  # a better `ls`
     fd                   # "find" for files
-    gimp                 # gnu image manipulation program
-    gnomecast            # chromecast local files
+    # gimp                 # gnu image manipulation program
+    # gnomecast            # chromecast local files
     hyperfine            # command-line benchmarking tool
-    insomnia             # rest client with graphql support
-    jitsi-meet-electron  # open source video calls and chat
-    k9s                  # k8s pods manager
+    # insomnia             # rest client with graphql support
+    # jitsi-meet-electron  # open source video calls and chat
+    # k9s                  # k8s pods manager
     killall              # kill processes by name
-    libreoffice          # office suite
-    libnotify            # notify-send command
+    # libreoffice          # office suite
+    # libnotify            # notify-send command
     multilockscreen      # fast lockscreen based on i3lock
     ncdu                 # disk space info (a better du)
     neofetch             # command-line system information
-    ngrok-2              # secure tunneling to localhost
+    # ngrok-2              # secure tunneling to localhost
     unstable.nheko       # matrix messaging client
     nix-doc              # nix documentation search tool
     nix-index            # files database for nixpkgs
     nixos-generators     # nix tool to generate isos
     nyancat              # the famous rainbow cat!
     manix                # documentation searcher for nix
-    md-toc               # generate ToC in markdown files
+    # md-toc               # generate ToC in markdown files
     pavucontrol          # pulseaudio volume control
     paprefs              # pulseaudio preferences
     pasystray            # pulseaudio systray
-    pgcli                # modern postgres client
-    playerctl            # music player controller
+    # pgcli                # modern postgres client
+    # playerctl            # music player controller
     prettyping           # a nicer ping
     pulsemixer           # pulseaudio mixer
     ripgrep              # fast grep
     rnix-lsp             # nix lsp server
-    signal-desktop       # signal messaging client
+    # signal-desktop       # signal messaging client
     simple-scan          # scanner gui
     simplescreenrecorder # screen recorder gui
-    slack                # messaging client
-    spotify              # music source
-    tdesktop             # telegram messaging client
-    terminator           # great terminal multiplexer
+    # slack                # messaging client
+    # spotify              # music source
+    # tdesktop             # telegram messaging client
+    # terminator           # great terminal multiplexer
     tex2nix              # texlive expressions for documents
     tldr                 # summary of a man page
     tree                 # display files in a tree view
@@ -82,10 +82,11 @@ let
   ];
 
   gnomePkgs = with pkgs.gnome3; [
-    eog            # image viewer
+    feh            # image viewer
     evince         # pdf reader
     gnome-calendar # calendar
     nautilus       # file manager
+    ranger         # file manager in terminal
   ];
 
   haskellPkgs = with pkgs.haskellPackages; [
@@ -105,10 +106,10 @@ let
 
   scripts = pkgs.callPackage ./scripts/default.nix { inherit config pkgs; };
 
-  yubiPkgs = with pkgs; [
-    yubikey-manager  # yubikey manager cli
-    yubioath-desktop # yubikey OTP manager (gui)
-  ];
+#  yubiPkgs = with pkgs; [
+#    yubikey-manager  # yubikey manager cli
+#    yubioath-desktop # yubikey OTP manager (gui)
+#  ];
 
   xmonadPkgs = with pkgs; [
     networkmanager_dmenu   # networkmanager on dmenu
@@ -133,9 +134,9 @@ in
 
   nixpkgs.overlays = [
     (import ./overlays/beauty-line)
-    (import ./overlays/coc-nvim)
-    (import ./overlays/discord)
-    (import ./overlays/md-toc)
+    # (import ./overlays/coc-nvim)
+    # (import ./overlays/discord)
+    # (import ./overlays/md-toc)
     (import ./overlays/tex2nix)
   ];
 
@@ -144,11 +145,11 @@ in
   xdg.enable = true;
 
   home = {
-    username      = "gvolpe";
-    homeDirectory = "/home/gvolpe";
-    stateVersion  = "21.03";
+    username      = "sid";
+    homeDirectory = "/home/sid";
+    stateVersion  = "unstable";
 
-    packages = defaultPkgs ++ gitPkgs ++ gnomePkgs ++ haskellPkgs ++ polybarPkgs ++ scripts ++ xmonadPkgs ++ yubiPkgs;
+    packages = defaultPkgs ++ gitPkgs ++ gnomePkgs ++ haskellPkgs ++ polybarPkgs ++ scripts ++ xmonadPkgs;
 
     sessionVariables = {
       DISPLAY = ":0";
@@ -196,10 +197,10 @@ in
 
     jq.enable = true;
 
-    obs-studio = {
-      enable = true;
-      plugins = [];
-    };
+    # obs-studio = {
+    #   enable = true;
+    #   plugins = [];
+    # };
 
     ssh.enable = true;
 

@@ -3,7 +3,7 @@
   ./dconf
   ./git
   ./fish
-  ./neovim
+  # ./neovim
   ./rofi
-  ./yubikey
+  # ./yubikey
 ]
